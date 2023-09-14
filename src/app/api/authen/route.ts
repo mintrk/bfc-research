@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { redirect } from "next/navigation";
-import cookie, { serialize } from "cookie";
 
 export async function POST(request: Request) {
   // const { token } = await request.json();
@@ -14,10 +13,10 @@ export async function POST(request: Request) {
   const token = body.get("token")?.toString();
   console.log("token : ", token);
 
-  const seralized = serialize("BFC-X-Authen", token || "no-token-yet", {
-    httpOnly: true,
-    maxAge: 60 * 60,
-  });
+  // const seralized = serialize("BFC-X-Authen", token || "no-token-yet", {
+  //   httpOnly: true,
+  //   maxAge: 60 * 60,
+  // });
 
   const response = NextResponse.redirect(new URL("/login", request.url), {
     status: 302,

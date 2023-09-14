@@ -6,7 +6,6 @@ type Props = {};
 
 const LoginPage = (props: Props) => {
   const [cookie, setCookie] = useState<string[]>();
-
   useEffect(() => {
     setCookie(document.cookie.split("="));
     // console.log("[Login] cookie : ", cookie);
@@ -15,14 +14,16 @@ const LoginPage = (props: Props) => {
     // }
   }, []);
   useEffect(() => {
-    console.log("[Login] cookie : ", cookie);
+    // console.log("[Login] cookie : ", cookie);
     if (cookie && cookie[0] === "BFC-X-Authen") {
+      console.log("[Login] have cookie");
       handleSignIn(cookie[1]);
     }
   }, [cookie]);
 
   const handleSignIn = async (token: string) => {
-    console.log("[Login] token : ", token);
+    // console.log("[Login] token : ", token);
+    console.log("[Login] calling signin by token");
     const res = await signIn("credentials", {
       token: token,
       callbackUrl: `${window.location.origin}/admin`,

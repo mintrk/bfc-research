@@ -5,17 +5,17 @@ import React, { use, useEffect, useState } from "react";
 import { options } from "../api/auth/[...nextauth]/options";
 import { axiosInstanceClient } from "@/lib/axios/axiosInstanceClient";
 import axios from "axios";
+import { getSessionData, setSessionData } from "@/lib/session/sessionStorage";
 
 type Props = {};
 
 const ClientPage = (props: Props) => {
-  // const { data: session } = useSession();
   // const session = use(getSession());
 
   // useEffect(() => {
   //   console.log("[Client] session : ", session?.tk);
   // }, [session]);
-
+  const { data: session } = useSession();
   const [res, setRes] = useState("");
 
   useEffect(() => {
@@ -26,6 +26,9 @@ const ClientPage = (props: Props) => {
       //     setRes(response.data);
       //   })
       //   .catch((err) => console.log(err));
+
+      // setSessionData("session_token", session?.tk);
+      sessionStorage.setItem("session_token", session?.tk || "");
       fetchRole();
     } catch (error) {
       console.log(error);
@@ -52,7 +55,7 @@ const ClientPage = (props: Props) => {
   return (
     <div>
       ClientPage
-      <p>{role ? role : ""}</p>
+      <p>Role : {role ? role : "can't get role"}</p>
     </div>
   );
 };
