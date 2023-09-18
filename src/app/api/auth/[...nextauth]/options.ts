@@ -36,12 +36,13 @@ export const options: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.tk = user.tk;
+        token.role = user.role;
       }
 
       return token;
     },
     async session({ session, token }) {
-      console.log("Token user : ", token.tk);
+      console.log("[next-auth] Token user : ", token.tk);
       if (token) {
         session = {
           tk: token.tk,
@@ -51,7 +52,7 @@ export const options: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: "/login",
-    error: "/login",
+    signIn: "/",
+    error: "/",
   },
 };

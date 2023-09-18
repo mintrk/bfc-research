@@ -9,7 +9,7 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(async (config) => {
-  const session = await getServerSession(options);
+  const session = await getServerSession();
   // const cookieStore = cookies();
   // let cookie = cookieStore.get("BFC-X-Authen");
   // const cookie = Cookies.get("BFC-X-Authen");

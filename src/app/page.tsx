@@ -41,6 +41,7 @@ function Page() {
 
   return (
     <div>
+      <h1>DSCF</h1>
       <form method="POST" action="/api/authen">
         <input id="token" name="token" type="text" value="mint" readOnly />
         <button type="submit">Send Token</button>

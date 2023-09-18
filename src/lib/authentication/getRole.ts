@@ -7,32 +7,20 @@ import { getSession } from "next-auth/react";
 
 export async function getRole() {
   try {
-    // const response = await fetch("http://localhost:3000/api/role", {
-    //   method: "POST",
-    // });
-    const response = await axiosInstanceClient.post("/api/role", {
-      token: "mint",
-    });
+    const response = await axiosInstanceClient.post("/api/role");
     console.log("[getRole] response : ", response.data);
     return response.data;
   } catch (error) {
     console.log("[getRole] error : ", error);
   }
-  // return { role: "mint" };
 }
 
 export async function getRoleServer() {
   try {
-    // const response = await fetch("http://localhost:3000/api/role", {
-    //   method: "POST",
-    // });
-    const response = await axiosInstance.post("/api/role", {
-      token: "mint",
-    });
+    const response = await axiosInstance.post("/api/role");
     console.log("[getRole] response : ", response.data);
     return response.data;
   } catch (error) {
     console.log("[getRole] error : ", error);
   }
-  // return { role: "mint" };
 }
